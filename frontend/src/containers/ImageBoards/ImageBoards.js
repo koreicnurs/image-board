@@ -10,8 +10,9 @@ const ImageBoards = () => {
     const loading = useSelector(state => state.imageBoard.loading);
     const imageBoards = useSelector(state => state.imageBoard.boards);
 
-    const onImageBoardFormSubmit = boardData => {
+    const onImageBoardFormSubmit = async boardData => {
         dispatch(createImageBoard(boardData));
+        await dispatch(getImageBoards());
     };
 
     useEffect(() => {
@@ -33,7 +34,7 @@ const ImageBoards = () => {
                 </Grid>
             </Grid>
             <FormImageBoard
-                onSubmit={() => onImageBoardFormSubmit()}
+                onSubmit={onImageBoardFormSubmit}
             />
         </>
     );
