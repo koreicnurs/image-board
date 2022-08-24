@@ -20,12 +20,12 @@ const ImageBoards = () => {
 
     return (
         <>
-            <Grid container direction="column" spacing={2}>
+            <Grid container direction="column" spacing={2} style={{margin: '100px'}}>
                 <Grid item container spacing={3}>
                     {imageBoards.map(i => (
                         <ImageBoard
                             key={i.id}
-                            author={i.author}
+                            author={i.author ? i.author : 'Anonymous'}
                             message={i.message}
                             image={i.image}
                         />

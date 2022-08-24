@@ -1,22 +1,18 @@
 import React from 'react';
 import {Card, CardContent, CardMedia, Paper, Typography} from "@mui/material";
+import {apiUrl} from "../../config";
 
 const ImageBoard = (props) => {
-
-    // if (props.image) {
-    //     boardImage = apiUrl + '/uploads/' + props.image;
-    // }
+    let boardImage = null;
+    if (props.image) {
+        boardImage = apiUrl + '/uploads/' + props.image;
+    }
 
     return (
         <Paper className='box-message' elevation={3} square>
             <Typography variant="body2" className='text'><b>Author</b>: {props.author}</Typography>
             <Typography variant="body2" className='text'><b>Message</b>: {props.message}</Typography>
-            <CardMedia
-                component="img"
-                height="140"
-                image={props.image}
-                alt={props.author}
-            />
+            {boardImage ? <img src={boardImage} alt=""/> : <img src="" alt="" style={{display: 'none'}}/>}
         </Paper>
     );
 };
