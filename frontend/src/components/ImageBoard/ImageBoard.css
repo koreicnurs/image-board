@@ -1,0 +1,23 @@
+.image-board-card {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 50px;
+    margin: 0 auto 20px 0;
+    background: #cee6fc;
+}
+
+.img-board {
+    margin-top: 20px;
+}
+
+.message {
+    font-family: Suruma;
+    font-size: 20px;
+    color: cadetblue;
+}
+
+.author {
+    font-family: aakar;
+    font-size: 30px;
+    color: #6c9be8;
+}

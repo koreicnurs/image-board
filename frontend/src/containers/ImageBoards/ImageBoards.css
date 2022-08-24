@@ -1,0 +1,9 @@
+body {
+    background: azure;
+}
+
+.image-board-container {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
-import {Paper, Typography} from "@mui/material";
+import {Card, CardContent, CardMedia, Typography} from "@mui/material";
 import {apiUrl} from "../../config";
+import './ImageBoard.css';
 
 const ImageBoard = (props) => {
     let boardImage = null;
@@ -9,11 +10,25 @@ const ImageBoard = (props) => {
     }
 
     return (
-        <Paper className='box-message' elevation={3} square>
-            <Typography variant="body2" className='text'><b>Author</b>: {props.author}</Typography>
-            <Typography variant="body2" className='text'><b>Message</b>: {props.message}</Typography>
-            {boardImage ? <img src={boardImage} alt=""/> : <img src="" alt="" style={{display: 'none'}}/>}
-        </Paper>
+        <Card className='image-board-card'>
+            <Typography gutterBottom variant="h5" component="div" className='author'>
+                Author: {props.author}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" className='message'>
+                Message: {props.message}
+            </Typography>
+            {boardImage ? <CardMedia className='img-board'
+                component="img"
+                height="300"
+                image={boardImage}
+                alt={props.author}
+            /> : <CardMedia className='img-board'
+
+                component="img"
+                height="140"
+                sx={{display: 'none'}}
+            />}
+        </Card>
     );
 };
 export default ImageBoard;
