@@ -4,6 +4,7 @@ import {Box, Grid} from "@mui/material";
 import ImageBoard from "../../components/ImageBoard/ImageBoard";
 import {createImageBoard, getImageBoards} from "../../store/actions/imageBoardActions";
 import FormImageBoard from "../../components/FormImageBoard/FormImageBoard";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const ImageBoards = () => {
     const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const ImageBoards = () => {
         dispatch(getImageBoards());
     }, [dispatch]);
 
-    return (
+    return loading ? <Spinner/> : (
         <>
             <Grid container direction="column" spacing={2} style={{margin: '100px'}}>
                 <Grid item container spacing={3}>

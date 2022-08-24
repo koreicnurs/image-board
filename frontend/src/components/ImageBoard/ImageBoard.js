@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardContent, CardMedia, Paper, Typography} from "@mui/material";
+import {Paper, Typography} from "@mui/material";
 import {apiUrl} from "../../config";
 
 const ImageBoard = (props) => {
