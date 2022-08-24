@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Grid, TextField} from "@mui/material";
+import FileInput from "../UI/FIleInput/FileInput";
 
 const FormImageBoard = ({onSubmit}) => {
     const [state, setState] = useState({
@@ -38,6 +39,7 @@ const FormImageBoard = ({onSubmit}) => {
         <form
             autoComplete="off"
             onSubmit={submitFormHandler}
+            style={{marginBottom: '50px'}}
         >
             <Grid
                 container
@@ -60,6 +62,7 @@ const FormImageBoard = ({onSubmit}) => {
 
                 <Grid item>
                     <TextField
+                        required
                         fullWidth
                         variant="outlined"
                         type="text"
@@ -71,8 +74,8 @@ const FormImageBoard = ({onSubmit}) => {
                 </Grid>
 
                 <Grid item>
-                    <TextField
-                        type="file"
+                    <FileInput
+                        label="Image"
                         name="image"
                         onChange={fileChangeHandler}
                     />
