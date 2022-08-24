@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Button, Grid, TextField} from "@mui/material";
 import FileInput from "../UI/FIleInput/FileInput";
 
-const FormImageBoard = ({onSubmit}) => {
+const FormImageBoard = ({createImageBoard}) => {
     const [state, setState] = useState({
         author: "",
         message: "",
@@ -17,7 +17,7 @@ const FormImageBoard = ({onSubmit}) => {
             formData.append(key, state[key]);
         });
 
-        onSubmit(formData);
+        createImageBoard(formData);
     };
 
     const inputChangeHandler = e => {

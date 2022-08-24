@@ -12,7 +12,7 @@ const ImageBoards = () => {
     const imageBoards = useSelector(state => state.imageBoard.boards);
 
     const onImageBoardFormSubmit = async boardData => {
-        dispatch(createImageBoard(boardData));
+        await dispatch(createImageBoard(boardData));
         await dispatch(getImageBoards());
     };
 
@@ -33,7 +33,7 @@ const ImageBoards = () => {
                 ))}
             </div>
             <FormImageBoard
-                onSubmit={onImageBoardFormSubmit}
+                createImageBoard={onImageBoardFormSubmit}
             />
         </>
     );
