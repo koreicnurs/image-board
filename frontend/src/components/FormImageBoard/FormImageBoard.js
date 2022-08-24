@@ -1,0 +1,89 @@
+import React, {useState} from 'react';
+import {Button, Grid, TextField} from "@mui/material";
+
+const FormImageBoard = ({onSubmit}) => {
+    const [state, setState] = useState({
+        author: "",
+        message: "",
+        image: "",
+    });
+
+    const submitFormHandler = e => {
+        e.preventDefault();
+        const formData = new FormData();
+
+        Object.keys(state).forEach(key => {
+            formData.append(key, state[key]);
+        });
+
+        onSubmit(formData);
+    };
+
+    const inputChangeHandler = e => {
+        const {name, value} = e.target;
+
+        setState(prevState => {
+            return {...prevState, [name]: value};
+        });
+    };
+
+    const fileChangeHandler = e => {
+        const name = e.target.name;
+        const file = e.target.files[0];
+
+        setState(prevState => ({...prevState, [name]: file}));
+    };
+
+    return (
+        <form
+            autoComplete="off"
+            onSubmit={submitFormHandler}
+        >
+            <Grid
+                container
+                maxWidth="md"
+                textAlign="center"
+                marginX="auto"
+                direction="column"
+                rowSpacing={2}
+            >
+                <Grid item>
+                    <TextField
+                        fullWidth
+                        variant="outlined"
+                        label="Author"
+                        name="author"
+                        value={state.author}
+                        onChange={inputChangeHandler}
+                    />
+                </Grid>
+
+                <Grid item>
+                    <TextField
+                        fullWidth
+                        variant="outlined"
+                        type="text"
+                        label="Message"
+                        name="message"
+                        value={state.message}
+                        onChange={inputChangeHandler}
+                    />
+                </Grid>
+
+                <Grid item>
+                    <TextField
+                        type="file"
+                        name="image"
+                        onChange={fileChangeHandler}
+                    />
+                </Grid>
+
+                <Grid item>
+                    <Button type="submit" color="primary" variant="contained">Create</Button>
+                </Grid>
+            </Grid>
+        </form>
+    );
+};
+
+export default FormImageBoard;
